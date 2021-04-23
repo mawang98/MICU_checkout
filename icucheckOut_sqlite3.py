@@ -424,6 +424,8 @@ class CheckinOut(QtWidgets.QMainWindow):
         self.alter.ui.lineEdit_4.setText(a[0][2])
         fromdate = datetime.datetime.strptime(a[0][3],'%Y-%m-%d')
         self.alter.ui.dateEdit.setDate(QtCore.QDate(fromdate.year,fromdate.month,fromdate.day))
+        self.alter.ui.lineEdit.setText(str(a[0][4]))
+        self.alter.ui.lineEdit_2.setText(a[0][5])
         
         
 def main():
