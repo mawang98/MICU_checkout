@@ -416,9 +416,7 @@ class CheckinOut(QtWidgets.QMainWindow):
         alter_beds = dict((y,x) for x,y in self.icuBedsDic.items())
         alter_fromwhere = dict((y,x) for x,y in self.fromWhereDic.items())
         alter_towhere = dict((y,x) for x,y in self.toWhereDic.items())
-
-        alter_fromwhere_key = a[0][1]
-        
+              
         print(alter_fromwhere[a[0][1]])
         self.alter.ui.comboBox_7.setCurrentIndex(alter_fromwhere[a[0][1]])
         self.alter.ui.lineEdit_4.setText(a[0][2])
@@ -426,7 +424,13 @@ class CheckinOut(QtWidgets.QMainWindow):
         self.alter.ui.dateEdit.setDate(QtCore.QDate(fromdate.year,fromdate.month,fromdate.day))
         self.alter.ui.lineEdit.setText(str(a[0][4]))
         self.alter.ui.lineEdit_2.setText(a[0][5])
-        
+        if a[0][6] == '男':
+            self.alter.ui.comboBox_2.setCurrentIndex(0)
+        else:
+            self.alter.ui.comboBox_2.setCurrentIndex(1)
+        self.alter.ui.lineEdit_3.setText(str(a[0][7]))
+        self.alter.ui.comboBox_5.setCurrentIndex(alter_beds[a[0][8]])
+
         
 def main():
     app = QtWidgets.QApplication(sys.argv)
