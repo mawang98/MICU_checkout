@@ -127,7 +127,7 @@ class CheckinOut(QtWidgets.QMainWindow):
         self.d.show()
         self.d.ui.textEdit.setText(self.ui.textEdit.toPlainText()) #将目前诊断填入诊断窗口
         self.d.ui.pushButton_2.clicked.connect(self.d.emit_diag)
-        self.d.diagnosis.connect(self.slot_ckdiag_write)
+        self.d.diagnosis.connect(self.slot_ckdiag_write) #将信号diagnosis连接至slot并传入参数diagnosis
        
     def slot_ckdiag_write(self,diag):   
     #槽函数插入诊断编辑窗口的内容 
@@ -430,6 +430,16 @@ class CheckinOut(QtWidgets.QMainWindow):
             self.alter.ui.comboBox_2.setCurrentIndex(1)
         self.alter.ui.lineEdit_3.setText(str(a[0][7]))
         self.alter.ui.comboBox_5.setCurrentIndex(alter_beds[a[0][8]])
+        self.alter.ui.comboBox_6.setCurrentIndex(alter_towhere[a[0][9]])
+        self.alter.ui.lineEdit_5.setText(a[0][10])
+        outdate =datetime.datetime.strptime(a[0][11],'%Y-%m-%d')
+        self.alter.ui.dateEdit_2.setDate(QtCore.QDate(outdate.year,outdate.month,outdate.day))
+        self.alter.ui.textEdit.setText(a[0][12])
+        if a[0][13]==1:
+            self.alter.ui.checkBox.setChecked(True)
+        else:
+            self.alter.ui.checkBox.setChecked(False)
+        self.alter.ui.lineEdit_6.setText(a[0][14])
 
         
 def main():

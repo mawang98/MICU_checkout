@@ -26,9 +26,11 @@ class DiagnosisWin(QtWidgets.QWidget):
     def emit_diag(self):      #信号发出，将文本框内容写入出院诊断
         self.diagnosis.emit(self.ui.textEdit.toPlainText())
         
-
-
-
+def main():
+    app = QtWidgets.QApplication(sys.argv)
+    main = DiagnosisWin()
+    main.show()
+    sys.exit(app.exec_())
 if __name__ == "__main__":
     main()
 
