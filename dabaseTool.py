@@ -9,7 +9,7 @@ class DatabaseTool():
         self.conn.commit()
         self.cur.close()
         self.conn.close()
-
+######## discharge 表操作
 class CreateTable(DatabaseTool):
     def createTableDischarge(self):
         sql = '''CREATE TABLE IF NOT EXISTS discharge(icuNum INT PRIMARY KEY, fromWhere TEXT, checkinTip TEXT, checkinDate DATE, admNum INT, name TEXT, gender TEXT, age INT, bed TEXT, checkoutTo Text, checkoutTip TEXT, checkoutDate DATE, diagnosis TEXT, isImportant INT, finalTip TEXT, operateTime TEXT)'''
@@ -92,7 +92,7 @@ class  ReadTable(DatabaseTool):
         return(a)
         self.closeDb()
 
-########### 参数数据表 towhere,fromwhere,beds 操作##############################################
+########### 参数数据表 towhere,fromwhere,beds,diagnosis 操作##############################################
 class Parameters(DatabaseTool):
     def creat_towhere(self):
         sql = 'CREATE TABLE IF NOT EXISTS towhere(snum INT PRIMARY KEY,towhere TEXT)'
@@ -106,6 +106,10 @@ class Parameters(DatabaseTool):
         sql = 'CREATE TABLE IF NOT EXISTS beds(snum INT PRIMARY KEY,bed TEXT)'
         self.cur.execute(sql)
         self.closeDb()       
+    def creat_diagnosis(self):
+        sql = 'CREATE TABLE IF NOT EXISTS diagnosis(snum INT PRIMARY KEY,diagnose TEXT)'
+        self.cur.execute(sql)
+        self.closeDb()  
 
     def delete_towhere(self):
         sql = 'DELETE FROM towhere'
@@ -143,6 +147,18 @@ class Parameters(DatabaseTool):
         self.cur.execute(sql2)
         self.closeDb()
     
+    def delete_diagnosis(self):
+        sql = 'DELETE FROM diagnosis'
+        self.cur.execute(sql)
+        self.closeDb()
+    
+    def refresh_diagnosis_values(self,values):
+        a = tuple(dict.items(values))
+        sql = 'INSERT INTO diagnosis VALUES '
+        sql2 = sql+str(a)[1:-1]
+        self.cur.execute(sql2)
+        self.closeDb()
+    
     def read_towhere(self):
         sql = 'SELECT * FROM towhere'
         self.cur.execute(sql)
@@ -165,6 +181,16 @@ class Parameters(DatabaseTool):
 
     def read_beds(self):
         sql = 'SELECT * FROM beds'
+        self.cur.execute(sql)
+        a = self.cur.fetchall()
+        b = {}
+        for i in a:
+            b[int(i[0])]=i[1]
+        return(b)
+        self.closeDb()
+
+    def read_diagnosis(self):
+        sql = 'SELECT * FROM diagnosis'
         self.cur.execute(sql)
         a = self.cur.fetchall()
         b = {}
