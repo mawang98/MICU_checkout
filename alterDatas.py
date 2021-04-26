@@ -33,6 +33,8 @@ class AlterDatas(QtWidgets.QWidget):
 
     def initSet(self):
         self.ui.label_5.setStyleSheet('color:red')
+        self.ui.lineEdit.setValidator(QtGui.QIntValidator(0,100000000))
+        self.ui.lineEdit_3.setValidator(QtGui.QIntValidator(0,100000000))
 
     def signalToSlot(self):
         self.ui.pushButton_6.clicked.connect(self.diagWin) 

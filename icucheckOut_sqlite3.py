@@ -60,6 +60,8 @@ class CheckinOut(QtWidgets.QMainWindow):
         self.ui.comboBox_7.setCurrentIndex(-1)
         self.ui.comboBox_6.addItems(self.toWhere)
         self.ui.comboBox_6.setCurrentIndex(-1)
+        self.ui.lineEdit.setValidator(QtGui.QIntValidator(0,100000000))
+        self.ui.lineEdit_3.setValidator(QtGui.QIntValidator(0,100000000))
         self.ui.lineEdit_8.setValidator(QtGui.QIntValidator(0,100000000))
         self.ui.tableWidget.setColumnCount(len(self.firstrow))    #初始化检索结果表头并填入表头内容
         self.ui.tableWidget.setHorizontalHeaderLabels(self.firstrow)
