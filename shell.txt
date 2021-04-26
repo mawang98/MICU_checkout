@@ -1,0 +1,1 @@
+ pyinstaller -D -w .\icucheckOut_sqlite3.py -p .\about.py -p .\alterData.ui -p .\dabaseTool.py -p .\diagnosis.py -p .\set_beds.py -p .\set_diag_name.py -p .\set_fromwhere.py -p .\set_towhere.py -p .\Ui_about.py -p .\Ui_alterData.py -p .\Ui_beds_set.py -p .\Ui_diag_names.py -p .\Ui_diagnosis.py -p .\Ui_fromwhere_set.py -p .\Ui_micuCheckOut.py -p .\Ui_towhere_set.py
