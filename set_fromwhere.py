@@ -4,22 +4,22 @@ import os
 from PyQt5 import QtWidgets,QtGui,QtCore
 from PyQt5.QtCore import pyqtSignal,pyqtSlot,QObject
 
-from Ui_diag_names import *
+from Ui_fromwhere_set import *
 from dabaseTool import *
 
-class SetDiagNameWin(QtWidgets.QWidget):
+class SetFromwhereWin(QtWidgets.QWidget):
     def __init__(self,parent=None):
         super().__init__(parent)
         self.ui = Ui_Form()
         self.a = self.ui.setupUi(self)
         self.windowCenter()
-        self.fillInTheDiagnosis()
+        self.fillInTheFromwhere()
         self.sigToSlot()
     
     def sigToSlot(self):
-        self.ui.pushButton_2.clicked.connect(self.addDiagnosis)
-        self.ui.pushButton_3.clicked.connect(self.delDiagnosis)
-        self.ui.pushButton.clicked.connect(self.saveTheNewDiagnosis)
+        self.ui.pushButton_2.clicked.connect(self.addFromwhere)
+        self.ui.pushButton_3.clicked.connect(self.delFromwhere)
+        self.ui.pushButton.clicked.connect(self.saveTheNewFromwhere)
 
     def windowCenter(self):
     #使窗口居中
@@ -27,53 +27,51 @@ class SetDiagNameWin(QtWidgets.QWidget):
         size = self.geometry()
         self.move((screen.width() - size.width())/2,(screen.height() - size.height())/2) 
     
-    def fillInTheDiagnosis(self):
-
+    def fillInTheFromwhere(self):
         a = Parameters()
-        b = a.read_diagnosis()
+        b = a.read_fromwhere()
         c = list(dict.values(b))
-        self.ui.tableWidget.setRowCount(len(c))
+        print(c)
         self.ui.tableWidget.setColumnCount(1)
+        self.ui.tableWidget.setRowCount(len(c))
         self.ui.tableWidget.setColumnWidth(0,290)
         for i in range(len(c)):
-            print(c[i])
             d = QtWidgets.QTableWidgetItem(c[i])
             self.ui.tableWidget.setItem(i,0,d)
 
-    def addDiagnosis(self):
+    def addFromwhere(self):
         #添加诊断
         self.ui.tableWidget.setRowCount(self.ui.tableWidget.rowCount()+1)
-    def delDiagnosis(self):
+    def delFromwhere(self):
         #删除诊断
         a = self.ui.tableWidget.currentRow()
         self.ui.tableWidget.removeRow(a)
-    def saveTheNewDiagnosis(self):
+    def saveTheNewFromwhere(self):
         a = self.ui.tableWidget.rowCount()
-        diagnosis = []
-        diagnosisDict = {}
+        fromwhere = []
+        fromwhereDict = {}
         for i in range(a):
             c = self.ui.tableWidget.item(i,0)
+            print(c)
             if c !=None and c.text() !='':
-                diagnosis.append(c.text())
-        for n in range(len(diagnosis)):
-            diagnosisDict[n]=diagnosis[n]
-        print(diagnosisDict)
+                fromwhere.append(c.text())
+        for n in range(len(fromwhere)):
+            fromwhereDict[n]=fromwhere[n]
+        print(fromwhereDict)
         try:
-            delete = Parameters().delete_diagnosis()
-            rewrite = Parameters().refresh_diagnosis_values(diagnosisDict)
-            QtWidgets.QMessageBox.information(self,'保存成功','更新诊断名称成功！')
+            delete = Parameters().delete_fromwhere()
+            rewrite = Parameters().refresh_fromwhere_values(fromwhereDict)
+            QtWidgets.QMessageBox.information(self,'保存成功','更新患者来源成功！')
             self.close()
 
         except :
-            QtWidgets.QMessageBox.warning(self,'保存诊断错误','删除原诊断名称和保存新诊断名称过程错误！')
-
-
+            QtWidgets.QMessageBox.warning(self,'保存诊断错误','删除原患者来源和保存新患者来源过程错误！')
 
   
 
 def main():
     app = QtWidgets.QApplication(sys.argv)
-    main = SetDiagNameWin()
+    main = SetFromwhereWin()
     main.show()
 
     sys.exit(app.exec_())

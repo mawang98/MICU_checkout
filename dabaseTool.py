@@ -123,7 +123,7 @@ class Parameters(DatabaseTool):
         self.cur.execute(sql)
         self.closeDb()       
     def creat_diagnosis(self):
-        sql = 'CREATE TABLE IF NOT EXISTS diagnosis(snum INT PRIMARY KEY,diagnose TEXT)'
+        sql = 'CREATE TABLE IF NOT EXISTS diagnosisName(snum INT PRIMARY KEY,diagnose TEXT)'
         self.cur.execute(sql)
         self.closeDb()  
 
@@ -164,13 +164,13 @@ class Parameters(DatabaseTool):
         self.closeDb()
     
     def delete_diagnosis(self):
-        sql = 'DELETE FROM diagnosis'
+        sql = 'DELETE FROM diagnosisName'
         self.cur.execute(sql)
         self.closeDb()
     
     def refresh_diagnosis_values(self,values):
         a = tuple(dict.items(values))
-        sql = 'INSERT INTO diagnosis VALUES '
+        sql = 'INSERT INTO diagnosisName VALUES '
         sql2 = sql+str(a)[1:-1]
         self.cur.execute(sql2)
         self.closeDb()
@@ -206,7 +206,7 @@ class Parameters(DatabaseTool):
         self.closeDb()
 
     def read_diagnosis(self):
-        sql = 'SELECT * FROM diagnosis'
+        sql = 'SELECT * FROM diagnosisName'
         self.cur.execute(sql)
         a = self.cur.fetchall()
         b = {}

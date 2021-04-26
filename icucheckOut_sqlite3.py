@@ -14,6 +14,10 @@ from Ui_micuCheckOut import *
 from diagnosis import *
 from dabaseTool import *
 from alterDatas import *
+from set_diag_name import *
+from set_beds import *
+from set_fromwhere import *
+from set_towhere import *
 
 class CheckinOut(QtWidgets.QMainWindow):
     def __init__(self,parent=None):
@@ -97,7 +101,26 @@ class CheckinOut(QtWidgets.QMainWindow):
         self.ui.pushButton_2.clicked.connect(self.save_to_excel)
         self.ui.tableWidget.itemDoubleClicked.connect(self.whenTableWidgetDoubleClicked)
         self.ui.listWidget.itemDoubleClicked.connect(self.whenListDoubleClicked)
-
+        self.ui.action_5.triggered.connect(self.setDiagnosisWin)
+        self.ui.action_3.triggered.connect(self.setBedsWin)
+        self.ui.action_2.triggered.connect(self.setFromwherewin)
+        self.ui.action_4.triggered.connect(self.setTowhereWin)
+    
+    def setDiagnosisWin(self):
+        self.setD = SetDiagNameWin()
+        self.setD.show()
+    
+    def setBedsWin(self):
+        self.setB = SetBedsWin()
+        self.setB.show()
+    
+    def setFromwherewin(self):
+        self.setF = SetFromwhereWin()
+        self.setF.show()
+    
+    def setTowhereWin(self):
+        self.setT = SetTowhereWin()
+        self.setT.show()
     
     def whenTableWidgetDoubleClicked(self):
         currentRow = self.ui.tableWidget.currentRow()

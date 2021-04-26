@@ -1,5 +1,6 @@
 import sqlite3
 from dabaseTool import *
 
-a = UpdateTableDischarge()
-b= a.updateDischargeValues('1000016',(1634175,'fdaafdfda','男','99'))
+diag ={0:'重症肺炎',1:'呼吸衰竭',2:'心力衰竭'}
+a = Parameters()
+b = a.refresh_diagnosis_values(diag)

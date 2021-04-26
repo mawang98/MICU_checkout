@@ -27,11 +27,6 @@
    </property>
    <item>
     <property name="text">
-     <string/>
-    </property>
-   </item>
-   <item>
-    <property name="text">
      <string>ARDS</string>
     </property>
    </item>

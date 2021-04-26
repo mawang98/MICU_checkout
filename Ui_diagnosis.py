@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file '/home/mawang/Documents/业余/python/checkin/diagnosis.ui'
+# Form implementation generated from reading ui file '/home/mawang/Documents/业余/python/micu_checkout/diagnosis.ui'
 #
 # Created by: PyQt5 UI code generator 5.15.2
 #
@@ -19,8 +19,6 @@ class Ui_diagnosis(object):
         self.comboBox = QtWidgets.QComboBox(diagnosis)
         self.comboBox.setGeometry(QtCore.QRect(40, 60, 221, 26))
         self.comboBox.setObjectName("comboBox")
-        self.comboBox.addItem("")
-        self.comboBox.setItemText(0, "")
         self.comboBox.addItem("")
         self.comboBox.addItem("")
         self.comboBox.addItem("")
@@ -49,14 +47,14 @@ class Ui_diagnosis(object):
     def retranslateUi(self, diagnosis):
         _translate = QtCore.QCoreApplication.translate
         diagnosis.setWindowTitle(_translate("diagnosis", "诊断编辑器"))
-        self.comboBox.setItemText(1, _translate("diagnosis", "ARDS"))
-        self.comboBox.setItemText(2, _translate("diagnosis", "肾功能衰竭"))
-        self.comboBox.setItemText(3, _translate("diagnosis", "肝功能衰竭"))
-        self.comboBox.setItemText(4, _translate("diagnosis", "心力衰竭"))
-        self.comboBox.setItemText(5, _translate("diagnosis", "呼吸衰竭"))
-        self.comboBox.setItemText(6, _translate("diagnosis", "循环衰竭"))
-        self.comboBox.setItemText(7, _translate("diagnosis", "胰腺炎"))
-        self.comboBox.setItemText(8, _translate("diagnosis", "肺炎"))
+        self.comboBox.setItemText(0, _translate("diagnosis", "ARDS"))
+        self.comboBox.setItemText(1, _translate("diagnosis", "肾功能衰竭"))
+        self.comboBox.setItemText(2, _translate("diagnosis", "肝功能衰竭"))
+        self.comboBox.setItemText(3, _translate("diagnosis", "心力衰竭"))
+        self.comboBox.setItemText(4, _translate("diagnosis", "呼吸衰竭"))
+        self.comboBox.setItemText(5, _translate("diagnosis", "循环衰竭"))
+        self.comboBox.setItemText(6, _translate("diagnosis", "胰腺炎"))
+        self.comboBox.setItemText(7, _translate("diagnosis", "肺炎"))
         self.pushButton.setText(_translate("diagnosis", "加入"))
         self.pushButton_2.setText(_translate("diagnosis", "写入"))
         self.pushButton_3.setText(_translate("diagnosis", "离开"))
