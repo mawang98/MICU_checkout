@@ -370,9 +370,9 @@ class CheckinOut(QtWidgets.QMainWindow):
                 b = QtWidgets.QTableWidgetItem(str(a[i][n]))
                 # print(b)                
                 self.ui.tableWidget.setItem(i,n,b)
-                self.ui.lineEdit_7.clear()
-                self.ui.lineEdit_8.clear()
-                self.ui.lineEdit_9.clear()
+        self.ui.lineEdit_7.clear()
+        self.ui.lineEdit_8.clear()
+        self.ui.lineEdit_9.clear()
 
     def conditionSearch(self,fromDate,toDate,name='',admNum='',diagnos=''):
     # 获取检索条件-检索-返回数据
