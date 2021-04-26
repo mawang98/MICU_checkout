@@ -8,6 +8,7 @@ from Ui_beds_set import *
 from dabaseTool import *
 
 class SetBedsWin(QtWidgets.QWidget):
+    signalClose = pyqtSignal(bool)
     def __init__(self,parent=None):
         super().__init__(parent)
         self.ui = Ui_Form()
@@ -15,6 +16,9 @@ class SetBedsWin(QtWidgets.QWidget):
         self.windowCenter()
         self.fillInTheBeds()
         self.sigToSlot()
+    
+    def emitSign(self):
+        self.signalClose.emit(True)
     
     def sigToSlot(self):
         self.ui.pushButton_2.clicked.connect(self.addBeds)
@@ -41,7 +45,8 @@ class SetBedsWin(QtWidgets.QWidget):
 
     def addBeds(self):
         #添加诊断
-        self.ui.tableWidget.setRowCount(self.ui.tableWidget.rowCount()+1)
+        nowRow = self.ui.tableWidget.currentRow()
+        self.ui.tableWidget.insertRow(nowRow+1)
     def delBeds(self):
         #删除诊断
         a = self.ui.tableWidget.currentRow()
@@ -61,6 +66,7 @@ class SetBedsWin(QtWidgets.QWidget):
             delete = Parameters().delete_beds()
             rewrite = Parameters().refresh_beds_values(bedsDict)
             QtWidgets.QMessageBox.information(self,'保存成功','更新床位成功！')
+            self.emitSign()
             self.close()
 
         except :

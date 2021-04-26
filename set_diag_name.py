@@ -8,6 +8,7 @@ from Ui_diag_names import *
 from dabaseTool import *
 
 class SetDiagNameWin(QtWidgets.QWidget):
+    signalClose = pyqtSignal(bool)
     def __init__(self,parent=None):
         super().__init__(parent)
         self.ui = Ui_Form()
@@ -15,7 +16,10 @@ class SetDiagNameWin(QtWidgets.QWidget):
         self.windowCenter()
         self.fillInTheDiagnosis()
         self.sigToSlot()
-    
+
+    def emitSign(self):
+        self.signalClose.emit(True)
+
     def sigToSlot(self):
         self.ui.pushButton_2.clicked.connect(self.addDiagnosis)
         self.ui.pushButton_3.clicked.connect(self.delDiagnosis)
@@ -42,7 +46,8 @@ class SetDiagNameWin(QtWidgets.QWidget):
 
     def addDiagnosis(self):
         #添加诊断
-        self.ui.tableWidget.setRowCount(self.ui.tableWidget.rowCount()+1)
+        nowRow = self.ui.tableWidget.currentRow()
+        self.ui.tableWidget.insertRow(nowRow+1)
     def delDiagnosis(self):
         #删除诊断
         a = self.ui.tableWidget.currentRow()
@@ -62,6 +67,7 @@ class SetDiagNameWin(QtWidgets.QWidget):
             delete = Parameters().delete_diagnosis()
             rewrite = Parameters().refresh_diagnosis_values(diagnosisDict)
             QtWidgets.QMessageBox.information(self,'保存成功','更新诊断名称成功！')
+            self.emitSign()
             self.close()
 
         except :

@@ -8,6 +8,7 @@ from Ui_fromwhere_set import *
 from dabaseTool import *
 
 class SetFromwhereWin(QtWidgets.QWidget):
+    signalClose = pyqtSignal(bool)
     def __init__(self,parent=None):
         super().__init__(parent)
         self.ui = Ui_Form()
@@ -15,7 +16,10 @@ class SetFromwhereWin(QtWidgets.QWidget):
         self.windowCenter()
         self.fillInTheFromwhere()
         self.sigToSlot()
-    
+
+    def emitSign(self):
+        self.signalClose.emit(True)
+
     def sigToSlot(self):
         self.ui.pushButton_2.clicked.connect(self.addFromwhere)
         self.ui.pushButton_3.clicked.connect(self.delFromwhere)
@@ -40,8 +44,9 @@ class SetFromwhereWin(QtWidgets.QWidget):
             self.ui.tableWidget.setItem(i,0,d)
 
     def addFromwhere(self):
-        #添加诊断
-        self.ui.tableWidget.setRowCount(self.ui.tableWidget.rowCount()+1)
+        #添加
+        nowRow = self.ui.tableWidget.currentRow()
+        self.ui.tableWidget.insertRow(nowRow+1)
     def delFromwhere(self):
         #删除诊断
         a = self.ui.tableWidget.currentRow()
@@ -62,6 +67,7 @@ class SetFromwhereWin(QtWidgets.QWidget):
             delete = Parameters().delete_fromwhere()
             rewrite = Parameters().refresh_fromwhere_values(fromwhereDict)
             QtWidgets.QMessageBox.information(self,'保存成功','更新患者来源成功！')
+            self.emitSign()
             self.close()
 
         except :

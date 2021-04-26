@@ -521,6 +521,7 @@
     <property name="title">
      <string>帮助</string>
     </property>
+    <addaction name="action"/>
    </widget>
    <addaction name="menu"/>
    <addaction name="menu_2"/>
@@ -544,6 +545,11 @@
   <action name="action_5">
    <property name="text">
     <string>诊断设置</string>
+   </property>
+  </action>
+  <action name="action">
+   <property name="text">
+    <string>关于该软件</string>
    </property>
   </action>
  </widget>

@@ -18,6 +18,7 @@ from set_diag_name import *
 from set_beds import *
 from set_fromwhere import *
 from set_towhere import *
+from about import *
 
 class CheckinOut(QtWidgets.QMainWindow):
     def __init__(self,parent=None):
@@ -49,6 +50,10 @@ class CheckinOut(QtWidgets.QMainWindow):
         self.fromWhere = dict.values(self.fromWhereDic)
         self.toWhere = dict.values(self.toWhereDic)
         self.firstrow=['ICU编码','病人来源','入科注释','入院时间','住院号','姓名','性别','年龄','床号','去向','去向备注','出科时间','诊断','重点病历标记','备注']
+        self.clearAll()
+        self.ui.comboBox_5.clear()
+        self.ui.comboBox_6.clear()
+        self.ui.comboBox_7.clear()
         self.ui.comboBox_5.addItems(self.icuBeds)  
         self.ui.comboBox_5.setCurrentIndex(-1)
         self.ui.comboBox_7.addItems(self.fromWhere)
@@ -105,22 +110,31 @@ class CheckinOut(QtWidgets.QMainWindow):
         self.ui.action_3.triggered.connect(self.setBedsWin)
         self.ui.action_2.triggered.connect(self.setFromwherewin)
         self.ui.action_4.triggered.connect(self.setTowhereWin)
+        self.ui.action.triggered.connect(self.aboutWin)
     
     def setDiagnosisWin(self):
         self.setD = SetDiagNameWin()
         self.setD.show()
+        self.setD.signalClose.connect(self.initSet)
     
     def setBedsWin(self):
         self.setB = SetBedsWin()
         self.setB.show()
+        self.setB.signalClose.connect(self.initSet)
     
     def setFromwherewin(self):
         self.setF = SetFromwhereWin()
         self.setF.show()
+        self.setF.signalClose.connect(self.initSet)
     
     def setTowhereWin(self):
         self.setT = SetTowhereWin()
         self.setT.show()
+        self.setT.signalClose.connect(self.initSet)
+
+    def aboutWin(self):
+        self.ab = AboutWin()
+        self.ab.show()
     
     def whenTableWidgetDoubleClicked(self):
         currentRow = self.ui.tableWidget.currentRow()
