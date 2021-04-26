@@ -159,6 +159,7 @@ class Ui_MainWindow(object):
         self.dateEdit_2.setObjectName("dateEdit_2")
         self.gridLayout_2.addWidget(self.dateEdit_2, 0, 9, 1, 1)
         self.verticalLayout.addWidget(self.groupBox_3)
+        self.verticalLayout.setStretch(1, 1)
         self.horizontalLayout_2.addWidget(self.groupBox_4)
         self.groupBox_2 = QtWidgets.QGroupBox(self.tab)
         self.groupBox_2.setMinimumSize(QtCore.QSize(180, 0))

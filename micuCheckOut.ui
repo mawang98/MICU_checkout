@@ -30,7 +30,7 @@
           <property name="title">
            <string>输入数据</string>
           </property>
-          <layout class="QVBoxLayout" name="verticalLayout">
+          <layout class="QVBoxLayout" name="verticalLayout" stretch="0,1">
            <item>
             <widget class="QGroupBox" name="groupBox">
              <property name="title">
