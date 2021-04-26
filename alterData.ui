@@ -120,13 +120,6 @@
            </property>
           </widget>
          </item>
-         <item row="0" column="1">
-          <widget class="QComboBox" name="comboBox_7">
-           <property name="currentIndex">
-            <number>-1</number>
-           </property>
-          </widget>
-         </item>
          <item row="2" column="2">
           <widget class="QLabel" name="label_6">
            <property name="text">
@@ -178,6 +171,9 @@
            </property>
           </widget>
          </item>
+         <item row="0" column="1">
+          <widget class="QLineEdit" name="lineEdit_7"/>
+         </item>
         </layout>
        </widget>
       </item>
@@ -187,6 +183,19 @@
          <string>出科</string>
         </property>
         <layout class="QGridLayout" name="gridLayout_2">
+         <item row="1" column="2" rowspan="2" colspan="7">
+          <widget class="QTextEdit" name="textEdit">
+           <property name="minimumSize">
+            <size>
+             <width>0</width>
+             <height>150</height>
+            </size>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="4">
+          <widget class="QLineEdit" name="lineEdit_5"/>
+         </item>
          <item row="1" column="9">
           <widget class="QCheckBox" name="checkBox">
            <property name="text">
@@ -207,70 +216,10 @@
            </property>
           </widget>
          </item>
-         <item row="0" column="1">
-          <widget class="QComboBox" name="comboBox_5">
-           <property name="sizePolicy">
-            <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-             <horstretch>0</horstretch>
-             <verstretch>0</verstretch>
-            </sizepolicy>
-           </property>
-          </widget>
-         </item>
          <item row="3" column="0">
           <widget class="QLabel" name="label_17">
            <property name="text">
             <string>备注:</string>
-           </property>
-          </widget>
-         </item>
-         <item row="3" column="1" colspan="9">
-          <widget class="QLineEdit" name="lineEdit_6"/>
-         </item>
-         <item row="0" column="3">
-          <widget class="QComboBox" name="comboBox_6">
-           <property name="sizePolicy">
-            <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-             <horstretch>0</horstretch>
-             <verstretch>0</verstretch>
-            </sizepolicy>
-           </property>
-           <property name="currentIndex">
-            <number>-1</number>
-           </property>
-          </widget>
-         </item>
-         <item row="1" column="2" rowspan="2" colspan="7">
-          <widget class="QTextEdit" name="textEdit">
-           <property name="minimumSize">
-            <size>
-             <width>0</width>
-             <height>150</height>
-            </size>
-           </property>
-          </widget>
-         </item>
-         <item row="0" column="4">
-          <widget class="QLineEdit" name="lineEdit_5"/>
-         </item>
-         <item row="2" column="9">
-          <widget class="QPushButton" name="pushButton_6">
-           <property name="text">
-            <string>编辑器</string>
-           </property>
-          </widget>
-         </item>
-         <item row="1" column="0" colspan="2">
-          <widget class="QLabel" name="label_15">
-           <property name="text">
-            <string>出科主要诊断:</string>
-           </property>
-          </widget>
-         </item>
-         <item row="0" column="6">
-          <widget class="QLabel" name="label_16">
-           <property name="text">
-            <string> 出科时间:</string>
            </property>
           </widget>
          </item>
@@ -288,16 +237,6 @@
            </property>
           </widget>
          </item>
-         <item row="0" column="9">
-          <widget class="QDateEdit" name="dateEdit_2">
-           <property name="displayFormat">
-            <string>yyyy-MM-dd</string>
-           </property>
-           <property name="calendarPopup">
-            <bool>true</bool>
-           </property>
-          </widget>
-         </item>
          <item row="5" column="3">
           <widget class="QPushButton" name="pushButton_4">
            <property name="enabled">
@@ -308,10 +247,13 @@
            </property>
           </widget>
          </item>
-         <item row="5" column="2">
-          <widget class="QCheckBox" name="checkBox_2">
+         <item row="3" column="1" colspan="9">
+          <widget class="QLineEdit" name="lineEdit_6"/>
+         </item>
+         <item row="2" column="9">
+          <widget class="QPushButton" name="pushButton_6">
            <property name="text">
-            <string/>
+            <string>编辑器</string>
            </property>
           </widget>
          </item>
@@ -321,6 +263,43 @@
             <string>选中后删除：</string>
            </property>
           </widget>
+         </item>
+         <item row="0" column="6">
+          <widget class="QLabel" name="label_16">
+           <property name="text">
+            <string> 出科时间:</string>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="9">
+          <widget class="QDateEdit" name="dateEdit_2">
+           <property name="displayFormat">
+            <string>yyyy-MM-dd</string>
+           </property>
+           <property name="calendarPopup">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+         <item row="5" column="2">
+          <widget class="QCheckBox" name="checkBox_2">
+           <property name="text">
+            <string/>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="0" colspan="2">
+          <widget class="QLabel" name="label_15">
+           <property name="text">
+            <string>出科主要诊断:</string>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="1">
+          <widget class="QLineEdit" name="lineEdit_8"/>
+         </item>
+         <item row="0" column="3">
+          <widget class="QLineEdit" name="lineEdit_9"/>
          </item>
         </layout>
        </widget>

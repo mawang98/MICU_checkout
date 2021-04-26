@@ -9,7 +9,8 @@ class DatabaseTool():
         self.conn.commit()
         self.cur.close()
         self.conn.close()
-######## discharge 表操作
+
+######## discharge 表操作######################################################################3
 class CreateTable(DatabaseTool):
     def createTableDischarge(self):
         sql = '''CREATE TABLE IF NOT EXISTS discharge(icuNum INT PRIMARY KEY, fromWhere TEXT, checkinTip TEXT, checkinDate DATE, admNum INT, name TEXT, gender TEXT, age INT, bed TEXT, checkoutTo Text, checkoutTip TEXT, checkoutDate DATE, diagnosis TEXT, isImportant INT, finalTip TEXT, operateTime TEXT)'''
@@ -91,6 +92,21 @@ class  ReadTable(DatabaseTool):
         a = self.cur.fetchall()
         return(a)
         self.closeDb()
+class UpdateTableDischarge(DatabaseTool):    
+    def updateDischargeValues(self,icuNum,theValues):
+        icuNumA = icuNum
+        theValuesA = theValues
+        sql = '''UPDATE discharge SET (fromWhere,checkinTip,checkinDate,admNum,name,gender,age,bed,checkoutTo,checkoutTip,checkoutDate,diagnosis,isImportant,finalTip,operateTime)=(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?) '''+'''WHERE icuNum = %s'''%icuNumA
+        self.cur.execute(sql,theValuesA)
+        self.closeDb()
+
+class DeletePatientData(DatabaseTool):
+    def deleteOnePatientData(self,icuNum):
+        icuNumA = icuNum
+        sql = '''DELETE FROM discharge WHERE icuNum = %s'''%icuNumA
+        self.cur.execute(sql)
+        self.closeDb()
+
 
 ########### 参数数据表 towhere,fromwhere,beds,diagnosis 操作##############################################
 class Parameters(DatabaseTool):

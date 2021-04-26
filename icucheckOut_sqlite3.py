@@ -97,6 +97,7 @@ class CheckinOut(QtWidgets.QMainWindow):
         self.ui.pushButton_2.clicked.connect(self.save_to_excel)
         self.ui.tableWidget.itemDoubleClicked.connect(self.whenTableWidgetDoubleClicked)
         self.ui.listWidget.itemDoubleClicked.connect(self.whenListDoubleClicked)
+
     
     def whenTableWidgetDoubleClicked(self):
         currentRow = self.ui.tableWidget.currentRow()
@@ -413,34 +414,40 @@ class CheckinOut(QtWidgets.QMainWindow):
         self.alter.show()
         self.alter.ui.label_3.setText('MICU序号：'+icunum)
 
-        alter_beds = dict((y,x) for x,y in self.icuBedsDic.items())
-        alter_fromwhere = dict((y,x) for x,y in self.fromWhereDic.items())
-        alter_towhere = dict((y,x) for x,y in self.toWhereDic.items())
+        # alter_beds = dict((y,x) for x,y in self.icuBedsDic.items())
+        # alter_fromwhere = dict((y,x) for x,y in self.fromWhereDic.items())
+        # alter_towhere = dict((y,x) for x,y in self.toWhereDic.items())
               
-        print(alter_fromwhere[a[0][1]])
-        self.alter.ui.comboBox_7.setCurrentIndex(alter_fromwhere[a[0][1]])
-        self.alter.ui.lineEdit_4.setText(a[0][2])
-        fromdate = datetime.datetime.strptime(a[0][3],'%Y-%m-%d')
-        self.alter.ui.dateEdit.setDate(QtCore.QDate(fromdate.year,fromdate.month,fromdate.day))
-        self.alter.ui.lineEdit.setText(str(a[0][4]))
-        self.alter.ui.lineEdit_2.setText(a[0][5])
-        if a[0][6] == '男':
+        # print(alter_fromwhere[a[0][1]])
+        self.alter.ui.lineEdit_7.setText(a[0][1]) #患者来源
+        self.alter.ui.lineEdit_4.setText(a[0][2]) #入科备注
+        fromdate = datetime.datetime.strptime(a[0][3],'%Y-%m-%d') 
+        self.alter.ui.dateEdit.setDate(QtCore.QDate(fromdate.year,fromdate.month,fromdate.day)) #入科时间
+        self.alter.ui.lineEdit.setText(str(a[0][4])) #住院号
+        self.alter.ui.lineEdit_2.setText(a[0][5]) #姓名
+        if a[0][6] == '男': #性别
             self.alter.ui.comboBox_2.setCurrentIndex(0)
         else:
             self.alter.ui.comboBox_2.setCurrentIndex(1)
-        self.alter.ui.lineEdit_3.setText(str(a[0][7]))
-        self.alter.ui.comboBox_5.setCurrentIndex(alter_beds[a[0][8]])
-        self.alter.ui.comboBox_6.setCurrentIndex(alter_towhere[a[0][9]])
-        self.alter.ui.lineEdit_5.setText(a[0][10])
+        self.alter.ui.lineEdit_3.setText(str(a[0][7])) #年龄
+        self.alter.ui.lineEdit_8.setText(a[0][8])  #床位号
+        self.alter.ui.lineEdit_9.setText(a[0][9])  #去向
+        self.alter.ui.lineEdit_5.setText(a[0][10]) #去向备注
         outdate =datetime.datetime.strptime(a[0][11],'%Y-%m-%d')
-        self.alter.ui.dateEdit_2.setDate(QtCore.QDate(outdate.year,outdate.month,outdate.day))
-        self.alter.ui.textEdit.setText(a[0][12])
-        if a[0][13]==1:
+        self.alter.ui.dateEdit_2.setDate(QtCore.QDate(outdate.year,outdate.month,outdate.day)) #出科时间
+        self.alter.ui.textEdit.setText(a[0][12])  #出科诊断
+        if a[0][13]==1: #重点患者标记
             self.alter.ui.checkBox.setChecked(True)
         else:
             self.alter.ui.checkBox.setChecked(False)
-        self.alter.ui.lineEdit_6.setText(a[0][14])
-
+        self.alter.ui.lineEdit_6.setText(a[0][14]) #患者备注
+        self.alter.ui.pushButton_5.clicked.connect(self.fillInTheList)
+        self.alter.ui.pushButton_4.clicked.connect(self.beginSearch)
+        self.alter.winclosed.connect(self.fillInTheList)
+        if self.ui.tableWidget.rowCount()>=1:
+            self.alter.winclosed.connect(self.beginSearch)
+        else:
+            pass
         
 def main():
     app = QtWidgets.QApplication(sys.argv)
