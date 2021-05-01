@@ -9,7 +9,7 @@
   <tool name="PyUIC" showInMainMenu="false" showInEditor="false" showInProject="false" showInSearchPopup="false" disabled="false" useConsole="true" showConsoleOnStdOut="false" showConsoleOnStdErr="false" synchronizeAfterRun="true">
     <exec>
       <option name="COMMAND" value="$JDKPath$" />
-      <option name="PARAMETERS" value="-m  PyQt5.uic.pyuic -x $FileName$ -o $FileNameWithoutExtension$.py" />
+      <option name="PARAMETERS" value="-m PyQt5.uic.pyuic -x $FileName$ -o $FileNameWithoutExtension$.py" />
       <option name="WORKING_DIRECTORY" value="$FileDir$" />
     </exec>
   </tool>
