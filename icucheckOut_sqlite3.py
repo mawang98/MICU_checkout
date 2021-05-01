@@ -30,7 +30,8 @@ class CheckinOut(QtWidgets.QMainWindow):
         self.signalToSlot()
         self.initSet()
         # self.checkDbFile()
-        self.fillInTheList()       
+        self.fillInTheList()
+        # 从新更新
     
     def initSet(self):
         #各项初始设置30:
