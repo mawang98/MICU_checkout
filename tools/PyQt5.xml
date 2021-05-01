@@ -1,0 +1,30 @@
+<toolSet name="PyQt5">
+  <tool name="Designer" description="pyqt5设计器" showInMainMenu="false" showInEditor="false" showInProject="false" showInSearchPopup="false" disabled="false" useConsole="true" showConsoleOnStdOut="false" showConsoleOnStdErr="false" synchronizeAfterRun="true">
+    <exec>
+      <option name="COMMAND" value="/usr/lib/x86_64-linux-gnu/qt5/bin/designer" />
+      <option name="PARAMETERS" value="$FileName$" />
+      <option name="WORKING_DIRECTORY" value="$FileDir$" />
+    </exec>
+  </tool>
+  <tool name="PyUIC" showInMainMenu="false" showInEditor="false" showInProject="false" showInSearchPopup="false" disabled="false" useConsole="true" showConsoleOnStdOut="false" showConsoleOnStdErr="false" synchronizeAfterRun="true">
+    <exec>
+      <option name="COMMAND" value="$JDKPath$" />
+      <option name="PARAMETERS" value="-m  PyQt5.uic.pyuic -x $FileName$ -o $FileNameWithoutExtension$.py" />
+      <option name="WORKING_DIRECTORY" value="$FileDir$" />
+    </exec>
+  </tool>
+  <tool name="PyUIC-P" showInMainMenu="false" showInEditor="false" showInProject="false" showInSearchPopup="false" disabled="false" useConsole="true" showConsoleOnStdOut="false" showConsoleOnStdErr="false" synchronizeAfterRun="true">
+    <exec>
+      <option name="COMMAND" value="$JDKPath$" />
+      <option name="PARAMETERS" value="-m  PyQt5.uic.pyuic -p $FileName$ -o $FileNameWithoutExtension$.py" />
+      <option name="WORKING_DIRECTORY" value="$FileDir$" />
+    </exec>
+  </tool>
+  <tool name="Rcc2Py" showInMainMenu="false" showInEditor="false" showInProject="false" showInSearchPopup="false" disabled="false" useConsole="true" showConsoleOnStdOut="false" showConsoleOnStdErr="false" synchronizeAfterRun="true">
+    <exec>
+      <option name="COMMAND" value="$JDKPath$" />
+      <option name="PARAMETERS" value="-m PyQt5.pyrcc_main $FileName$ -o $FileNameWithoutExtension$_rc.py" />
+      <option name="WORKING_DIRECTORY" value="$FileDir$" />
+    </exec>
+  </tool>
+</toolSet>
