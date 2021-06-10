@@ -9,16 +9,16 @@ from PyQt5 import QtWidgets,QtGui,QtCore
 from PyQt5.QtCore import pyqtSignal,pyqtSlot,QObject
 from PyQt5.QtWidgets import QAbstractItemView
 
-from Ui_micuCheckOut import *
+from Ui_micuCheckOut import Ui_MainWindow
 
-from diagnosis import *
+from diagnosis import DiagnosisWin
 from dabaseTool import *
-from alterDatas import *
-from set_diag_name import *
-from set_beds import *
-from set_fromwhere import *
-from set_towhere import *
-from about import *
+from alterDatas import AlterDatas
+from set_diag_name import SetDiagNameWin
+from set_beds import SetBedsWin
+from set_fromwhere import SetFromwhereWin
+from set_towhere import SetTowhereWin
+from about import AboutWin
 
 class CheckinOut(QtWidgets.QMainWindow):
     def __init__(self,parent=None):
@@ -29,7 +29,7 @@ class CheckinOut(QtWidgets.QMainWindow):
         self.set_time()
         self.signalToSlot()
         self.initSet()
-        # self.checkDbFile()
+        self.checkDbFile()
         self.fillInTheList()
         # 从新更新
     
